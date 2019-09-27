@@ -1,14 +1,23 @@
 import React from "react";
 import Todo from "./Todo";
 
+import { connect } from "react-redux";
+import { getTodosByFilter } from "../redux/selectors";
+
 const TodoList = ({ todos }) => (
   <ul className="todo-list">
     {todos && todos.length
       ? todos.map((todo, index) => {
           return <Todo key={`todo-${todo.id}`} todo={todo} />;
         })
-      : "No todos, yay!"}
+      : "There are no todos"}
   </ul>
 );
 
-export default TodoList;
+const mapStateToProps = state => {
+  const { filter } = state;
+  const todos = getTodosByFilter(state, filter);
+  return { todos };
+};
+
+export default connect(mapStateToProps)(TodoList);

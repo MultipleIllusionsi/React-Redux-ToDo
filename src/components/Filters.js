@@ -1,7 +1,10 @@
 import React from "react";
 import { FILTERS } from "../constants";
 
-const Filters = ({ activeFilter }) => {
+import { connect } from "react-redux";
+import { setFilter } from "../redux/actions";
+
+const Filters = ({ activeFilter, setFilter }) => {
   return (
     <div className="filters">
       {Object.keys(FILTERS).map(filterKey => {
@@ -13,7 +16,11 @@ const Filters = ({ activeFilter }) => {
               filter
               ${currentFilter === activeFilter && "filter--active"}
             `}
-            onClick={() => {} /** waiting for setFilter handler*/}
+            onClick={() => {
+              setFilter(currentFilter);
+              console.log("currentFilter", currentFilter);
+              console.log("activeFilter", activeFilter);
+            }}
           >
             {currentFilter}
           </span>
@@ -23,4 +30,11 @@ const Filters = ({ activeFilter }) => {
   );
 };
 
-export default Filters;
+const mapStateToProps = state => {
+  return { activeFilter: state.filter };
+};
+
+export default connect(
+  mapStateToProps,
+  { setFilter }
+)(Filters);
