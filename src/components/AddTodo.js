@@ -17,7 +17,7 @@ class AddTodo extends React.Component {
 
   render() {
     return (
-      <div class="form-todo">
+      <div className="form-todo">
         <input
           onChange={e => this.updateInput(e.target.value)}
           value={this.state.input}

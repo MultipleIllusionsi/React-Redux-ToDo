@@ -1,7 +1,7 @@
 import { ADD_TODO, REMOVE_TODO, TOGGLE_TODO } from "../actionTypes";
 
 const initialState = {
-  allTodos: []
+  todos: []
 };
 
 export default function(state = initialState, { type, payload }) {
@@ -9,8 +9,8 @@ export default function(state = initialState, { type, payload }) {
     case ADD_TODO: {
       const { id, content } = payload;
       return {
-        allTodos: [
-          ...state.allTodos,
+        todos: [
+          ...state.todos,
           {
             content,
             id,
@@ -21,17 +21,16 @@ export default function(state = initialState, { type, payload }) {
     }
     case REMOVE_TODO: {
       return {
-        allTodos: state.allTodos.filter(
-          todo => todo.id !== payload.id
-        )
+        todos: state.todos.filter(todo => todo.id !== payload.id)
       };
     }
     case TOGGLE_TODO: {
-      const indexTodo = state.allTodos.find(
-        todo => todo.id === payload.id
-      );
       return {
-        allTodos: [...state.allTodos]
+        todos: state.todos.map(todo =>
+          todo.id === payload.id
+            ? { ...todo, completed: !todo.completed }
+            : todo
+        )
       };
     }
     default:

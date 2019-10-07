@@ -2,7 +2,7 @@ import React from "react";
 import Todo from "./Todo";
 
 import { connect } from "react-redux";
-import { getTodoList } from "../redux/selectors";
+import { getTodosByFilter } from "../redux/selectors";
 
 const TodoList = ({ todos }) => (
   <ul className="todo-list">
@@ -16,8 +16,7 @@ const TodoList = ({ todos }) => (
 
 const mapStateToProps = state => {
   const { filter } = state;
-  const todos = getTodoList(state);
-  console.log("todos", todos);
+  const todos = getTodosByFilter(state, filter);
   return { todos };
 };
 

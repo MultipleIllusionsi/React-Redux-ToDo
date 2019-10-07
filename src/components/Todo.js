@@ -6,9 +6,8 @@ import { ReactComponent as TrashIcon } from "../assets/trash-icon.svg";
 
 const Todo = ({ todo, toggleTodo, removeTodo }) => {
   return (
-    <li className="todo-item">
+    <li onClick={() => toggleTodo(todo.id)} className="todo-item">
       <span
-        onClick={() => toggleTodo(todo.id)}
         className={`
         todo-item__text 
         ${todo && todo.completed && "todo-item__text--completed"}
@@ -17,7 +16,10 @@ const Todo = ({ todo, toggleTodo, removeTodo }) => {
         {todo.content}
       </span>
       <TrashIcon
-        onClick={() => removeTodo(todo.id)}
+        onClick={e => {
+          e.stopPropagation();
+          removeTodo(todo.id);
+        }}
         className="todo-item__trash"
       />
     </li>

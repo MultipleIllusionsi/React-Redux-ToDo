@@ -17,9 +17,7 @@ const Filters = ({ activeFilter, setFilter }) => {
               ${currentFilter === activeFilter && "filter--active"}
             `}
             onClick={() => {
-              // setFilter(currentFilter);
-              console.log("currentFilter", currentFilter);
-              console.log("activeFilter", activeFilter);
+              setFilter(currentFilter);
             }}
           >
             {currentFilter}
