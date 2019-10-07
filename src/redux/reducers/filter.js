@@ -1,12 +1,12 @@
 import { SET_FILTER } from "../actionTypes";
 import { FILTERS } from "../../constants";
 
-const initialState = FILTERS.ALL;
+const INITIAL_STATE = FILTERS.ALL;
 
-const filter = (state = initialState, action) => {
-  switch (action.type) {
+const filter = (state = INITIAL_STATE, { type, payload }) => {
+  switch (type) {
     case SET_FILTER: {
-      return action.payload.filter;
+      return payload.filter;
     }
     default: {
       return state;

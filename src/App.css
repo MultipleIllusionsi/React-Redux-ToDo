@@ -63,11 +63,24 @@ h1 {
 }
 
 .todo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   font-size: 20px;
   font-family: monospace;
   cursor: pointer;
-  padding: 10px 0;
+  padding: 10px;
   background-color: #dfe4ea;
+}
+
+.todo-item__trash {
+  height: 20px;
+  width: 20px;
+  transition: all 0.5s;
+}
+
+.todo-item__trash:hover {
+  transform: scale(1.1);
 }
 
 .todo-item:first-of-type {
