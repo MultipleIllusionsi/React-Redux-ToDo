@@ -4,22 +4,22 @@ import { connect } from "react-redux";
 import { addTodo } from "../redux/actions";
 
 const AddTodo = ({ addTodo }) => {
-  const [input, setInput] = useState("");
+  const [value, setValue] = useState("");
 
-  const updateInput = input => {
-    setInput(input);
+  const updateInput = value => {
+    setValue(value);
   };
 
   const handleAddTodo = () => {
-    addTodo(input);
-    setInput("");
+    addTodo(value);
+    setValue("");
   };
 
   return (
     <div className="form-todo">
       <input
         onChange={e => updateInput(e.target.value)}
-        value={input}
+        value={value}
         maxLength={20}
         autoFocus
       />
@@ -28,7 +28,4 @@ const AddTodo = ({ addTodo }) => {
   );
 };
 
-export default connect(
-  null,
-  { addTodo }
-)(AddTodo);
+export default connect(null, { addTodo })(AddTodo);
