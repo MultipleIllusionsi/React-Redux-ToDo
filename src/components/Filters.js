@@ -6,25 +6,25 @@ import { setFilter } from "../redux/actions";
 
 const Filters = ({ activeFilter, setFilter }) => {
   return (
-    <div className="filters">
+    <ul className="filters">
       {Object.keys(FILTERS).map(filterKey => {
         const currentFilter = FILTERS[filterKey];
         return (
-          <span
+          <li
+            tabIndex="0"
             key={`filter-${currentFilter}`}
-            className={`
-              filter
-              ${currentFilter === activeFilter && "filter--active"}
+            className={`filter ${currentFilter ===
+              activeFilter && "filter--active"}
             `}
             onClick={() => {
               setFilter(currentFilter);
             }}
           >
             {currentFilter}
-          </span>
+          </li>
         );
       })}
-    </div>
+    </ul>
   );
 };
 
@@ -32,7 +32,6 @@ const mapStateToProps = state => {
   return { activeFilter: state.filter };
 };
 
-export default connect(
-  mapStateToProps,
-  { setFilter }
-)(Filters);
+export default connect(mapStateToProps, { setFilter })(
+  Filters
+);

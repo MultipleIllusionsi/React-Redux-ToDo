@@ -10,21 +10,24 @@ const AddTodo = ({ addTodo }) => {
     setValue(value);
   };
 
-  const handleAddTodo = () => {
+  const handleAddTodo = e => {
+    e.preventDefault();
     addTodo(value);
     setValue("");
   };
 
   return (
-    <div className="form-todo">
+    <form className="form-todo">
       <input
         onChange={e => updateInput(e.target.value)}
         value={value}
         maxLength={20}
         autoFocus
       />
-      <button onClick={handleAddTodo}>Add Todo</button>
-    </div>
+      <button type="submit" onClick={handleAddTodo}>
+        Add Todo
+      </button>
+    </form>
   );
 };
 

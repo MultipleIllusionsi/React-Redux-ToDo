@@ -20,6 +20,8 @@ const Todo = ({ todo, toggleTodo, removeTodo }) => (
       {todo.content}
     </span>
     <TrashIcon
+      tabIndex="0"
+      aria-label="delete button"
       onClick={e => {
         e.stopPropagation();
         removeTodo(todo.id);

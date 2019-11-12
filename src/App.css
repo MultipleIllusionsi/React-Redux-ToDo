@@ -11,7 +11,8 @@ html {
 }
 
 .App {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana,
+    sans-serif;
   width: max-content;
   margin: 10vh auto 0;
   border: 1px solid #a4b0be;
@@ -106,6 +107,7 @@ h1 {
   padding: 2rem 0 0;
 }
 .filter {
+  display: inline;
   padding: 0.3rem 0;
   margin: 0 0.3rem;
   cursor: pointer;
